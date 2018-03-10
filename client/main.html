@@ -6,24 +6,28 @@
 <body>
   <h1>Welcome to Meteor!</h1>
 
-  {{> hello}} {{> form}} {{> info}}
+   {{> formContainer}} {{> info}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
 
-<template name="form">
+
+<template name="formContainer">
   <div class="form">
     <div class="wrapper">
       <div class="main">
         <div class="container">
-          brbghyjk
+          {{> form }}
         </div>
       </div>
     </div>
   </div>
+</template>
+
+<template name="form">
+  <form>
+    <input type="text"  placeholder="paste your URL">
+    <button type="submit" >Submit</button>
+  </form>
 </template>
 
 <template name="info">
