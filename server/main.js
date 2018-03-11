@@ -5,6 +5,10 @@ Meteor.startup(() => {
   // code to run on server at startup
 });
 
-Meteor.publish('records', function() {
+Meteor.publish('records', () => {
   return Records.find();
+})
+
+Meteor.publish('lastTen', () => {
+  return Records.find({}, {sort:{created: -1}, limit:10});
 })

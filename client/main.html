@@ -1,12 +1,12 @@
 <head>
   <title>tinyURL</title>
-  <link rel="stylesheet"  type="text/css" href="./main.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
 </head>
 
 <body>
   <h1>Welcome to Meteor!</h1>
 
-   {{> formContainer}} {{> info}}
+  {{> formContainer}}
 </body>
 
 
@@ -16,8 +16,7 @@
     <div class="wrapper">
       <div class="main">
         <div class="container">
-          {{> form }}
-          {{> list}}
+          {{> form }} {{> Template.dynamic template="list"}}
         </div>
       </div>
     </div>
@@ -25,22 +24,17 @@
 </template>
 
 <template name="list">
-  <div name="resaultList">Hey World</div>
+  <div>ASD</div>
+  <ul>
+    {{#each record in topTen}}
+    <li><a>{{record.longUrl}}</a></li>
+    {{/each}}
+  </ul>
 </template>
 
 <template name="form">
   <form>
-    <input type="url" name="urlInput"  placeholder="paste your URL">
-    <button type="submit" >Submit</button>
+    <input type="url" name="urlInput" placeholder="paste your URL">
+    <button type="submit">Submit</button>
   </form>
-</template>
-
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
 </template>

@@ -61,8 +61,10 @@ Meteor.methods({
         lastDoc.forEach((element) => {
             shortUrl=element.shortUrl;
             longUrl=element.longUrl;           
-            console.log(shortUrl + "   " + longUrl);          
-        });            
+            console.log(shortUrl + "   " + longUrl);
+            return shortUrl;           
+            
+        });
     }
 
 });

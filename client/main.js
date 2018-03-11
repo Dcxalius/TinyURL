@@ -4,12 +4,26 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './main.html';
 import { Records } from '/imports/api/records.js'
-
 Template.form.onCreated(()=> { 
-  Meteor.call('getLastTen');
-})
 
-Template.form.helpers({
+})
+Template.list.onCreated(()=> { 
+  
+})
+Template.list.onRendered(()=> { 
+  
+})
+Template.list.helpers({
+  topTen: () => {
+    const lastTen = Meteor.subscribe('records');
+  
+        return lastTenRecords = Records.find({}, {sort:{created: -1}, limit:10})
+        // console.log(lastTenRecords);
+        // lastTenRecords.forEach(function(element) {
+        //   console.log(element);
+        // });
+
+}
 });
 
 Template.form.events({
@@ -21,7 +35,6 @@ Template.form.events({
     Meteor.call('encode', url);
   },
 });
-
 
 FlowRouter.route('/:shortUrl', {
   name: 'shortUrl',
