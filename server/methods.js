@@ -28,7 +28,6 @@ Meteor.methods({
             'shortUrl': encodedUrl,
             'created': new Date(),
         });
-        console.log(Records.findOne({longUrl: longUrl}));
     },
 
     decode(str) {
@@ -42,19 +41,28 @@ Meteor.methods({
         console.log(decoded);
         return decoded;
     },
-
-    cutURL(url) {
-        pathName = url.split('/').slice(-1).join('/');
-/*         console.log(pathName);
- */        /*         let newSeq =methods.getLastSequence()+1;
- */
+    // cutURL(url) {
+    //     pathName = url.split('/').slice(-1).join('/');
+    //       console.log(pathName);
+    //       let newSeq =methods.getLastSequence()+1;
+ 
         
-        /* console.log('the last seq is '+newSeq);
-        let test;
-        test= newSeq + 1;
-        console.log(test);
-        Meteor.call('encode', test); */
+    //     console.log('the last seq is '+newSeq);
+    //     let test;
+    //     test= newSeq + 1;
+    //     console.log(test);
+    //     Meteor.call('encode', test);
 
+    // },
+    getLastTen(){
+        let lastDoc = Records.find({}, { sort: { 'created': -1}, limit: 10 });
+        let shortUrl;
+        let longUrl;
+        lastDoc.forEach((element) => {
+            shortUrl=element.shortUrl;
+            longUrl=element.longUrl;           
+            console.log(shortUrl + "   " + longUrl);          
+        });            
     }
 
 });

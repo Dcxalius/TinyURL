@@ -6,6 +6,7 @@ import './main.html';
 import { Records } from '/imports/api/records.js'
 
 Template.form.onCreated(()=> { 
+  Meteor.call('getLastTen');
 })
 
 Template.form.helpers({
