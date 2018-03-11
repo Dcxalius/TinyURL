@@ -22,3 +22,19 @@ Template.form.events({
 });
 
 
+FlowRouter.route('/:shortUrl', {
+  name: 'shortUrl',
+  action(params) {
+    const qwe = Meteor.subscribe('records');
+    Tracker.autorun(() => {
+      if(qwe.ready()) {
+        const longUrl = Records.findOne({shortUrl: params.shortUrl}).longUrl;
+        window.location = longUrl;
+
+      } else {
+        console.log('Loading...');
+        // FlowRouter.redirect();
+      }
+    });
+  }
+});
