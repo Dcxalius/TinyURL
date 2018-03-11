@@ -3,33 +3,22 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './main.html';
+import { Records } from '/imports/api/records.js'
 
-
-
-Template.form.onCreated(()=> {
-  console.log("form created");
-  Meteor.call('getLastSequence');
+Template.form.onCreated(()=> { 
 })
 
 Template.form.helpers({
-  input() {
-    return Template.instance().input;
-  }
 });
 
 Template.form.events({
- /*  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  }, */
+  'submit'(event) {
+    event.preventDefault();
+    const target = event.target;
+    const url = target.urlInput.value;
 
-
+    Meteor.call('encode', url);
+  },
 });
 
-FlowRouter.route('/:shortURL', {
-  name: 'shortURL',
-  action(params) {
-    console.log(params);
 
-  }
-})
