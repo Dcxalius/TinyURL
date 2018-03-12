@@ -3,7 +3,6 @@ import { Records } from '/imports/api/records.js';
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 Meteor.methods({
-
     encode(longUrl) {
         let newSeq = 0;
         
@@ -22,52 +21,21 @@ Meteor.methods({
             encodedUrl = alphabet[encodeNumber % 62] + encodedUrl;
             encodeNumber = Math.floor(encodeNumber / 62);
         }
+        return { longUrl, encodedUrl, newSeq };  
+    },
 
-        Records.insert({
-            'longUrl': longUrl,
-            'seq': newSeq,
-            'shortUrl': encodedUrl,
+    recordsInsert(userId, document) {
+        return Records.insert({
+            'userId': userId,
+            'longUrl': document.longUrl,
+            'seq': document.newSeq,
+            'shortUrl': document.encodedUrl,
             'clicked': 0,
             'created': new Date(),
-        });
-        return 
+        }); 
     },
 
-    decode(str) {
-        var decoded = 0;
-        while (str) {
-            var index = alphabet.indexOf(str[0]);
-            var power = str.length - 1;
-            decoded += index * (Math.pow(62, power));
-            str = str.substring(1);
-        }
-        console.log(decoded);
-        return decoded;
-    },
-    // cutURL(url) {
-    //     pathName = url.split('/').slice(-1).join('/');
-    //       console.log(pathName);
-    //       let newSeq =methods.getLastSequence()+1;
- 
-        
-    //     console.log('the last seq is '+newSeq);
-    //     let test;
-    //     test= newSeq + 1;
-    //     console.log(test);
-    //     Meteor.call('encode', test);
-
-    // },
-    getLastTen(){
-        let lastDoc = Records.find({}, { sort: { 'created': -1}, limit: 10 });
-        let shortUrl;
-        let longUrl;
-        lastDoc.forEach((element) => {
-            shortUrl=element.shortUrl;
-            longUrl=element.longUrl;           
-            console.log(shortUrl);
-            return shortUrl;           
-            
-        });
+    recordsUpdate(userId) {
+        return Records.update({_id: userId}, { $set: {userId: userId}});
     }
-
 });

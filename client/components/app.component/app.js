@@ -3,6 +3,17 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Records } from './../../../imports/api/records.js'
 
 import './../../index.html';
+Template.appContainer.onCreated(() => {
+  this.showResult = new ReactiveVar( false );
+
+});
+
+Template.appContainer.helpers({
+  showResult: function() {
+    
+    // return Template.instance().showResult.get();
+  }
+});
 
 FlowRouter.route('/:shortUrl', {
     name: 'shortUrl',

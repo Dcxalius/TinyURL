@@ -1,19 +1,52 @@
-import {Template} from 'meteor/templating';
-import {Records} from '../../../imports/api/records.js'
+import { Template } from 'meteor/templating';
+import { Records } from '../../../imports/api/records.js'
 
 import './form.template.html';
-const lastTen = Meteor.subscribe('records');
 
 Template.form.onCreated(() => {
-    console.log("ASD");
-    this.in
+    Meteor.subscribe('records');
+
+    Template.instance().encode = ((url) => {
+        return new Promise ((resolve, reject) => {
+            Meteor.call('encode', url, (error, results) => {
+                if (error) reject(error);
+                if (results) resolve(results);
+            });
+        });
+    });
+
+    Template.instance().insertDocument = ((userId, doc) => {
+        return new Promise((resolve, reject) => {
+            if (doc) {
+                Meteor.call('recordsInsert', userId, doc, (error, documentId) => {
+                    if (error) reject(error);
+                    if (documentId) resolve(documentId);
+                });
+            }
+        });
+    });
+});
+
+Template.form.helpers({
+    
 });
 
 Template.form.events({
-    'submit' (event) {
-      event.preventDefault();
-      const target = event.target;
-      const url = target.urlInput.value;
-      Meteor.call('encode', url);
+    'submit' (event, template) {
+        event.preventDefault();
+
+        const url = event.target.urlInput.value;
+        const userId = localStorage.getItem('userId');
+        
+        template.encode(url)
+            .then((doc) => {
+                template.insertDocument(userId, doc)
+                    .then((documentId) => {
+                        if (!userId) {
+                            Meteor.call('recordsUpdate', documentId);
+                            localStorage.setItem('userId', documentId);
+                        }
+                    });
+            });
     }
 });

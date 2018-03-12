@@ -6,6 +6,5 @@ import './result.template.html';
 Template.result.helpers({
     result: () => {
       return true;
-      
     },
   });
