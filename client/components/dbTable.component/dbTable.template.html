@@ -1,0 +1,27 @@
+<template name='dbTable'>
+        <div class="dbTable-container">
+          {{#if checkIfEmpty}}
+          <table cellspacing='0'>
+            <thead>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>TinyURL</th>
+                <th>long URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each record in topTen}}
+              <tr>
+                <td>{{@index}}</td>
+                <td>{{record.clicked}}</td>
+                <td><a href={{record.shortUrl}}>{{record.shortUrl}}</a></td>
+                <td><a href={{record.longUrl}}>{{record.longUrl}}</a></td>
+                <td>{{record.created}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+          {{/if}}
+        </div>
+      </template>

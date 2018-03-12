@@ -30,6 +30,7 @@ Meteor.methods({
             'clicked': 0,
             'created': new Date(),
         });
+        return 
     },
 
     decode(str) {
