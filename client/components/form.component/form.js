@@ -3,10 +3,10 @@ import { Records } from '../../../imports/api/records.js'
 
 import './form.template.html';
 
-Template.form.onCreated(() => {
+Template.form.onCreated(function() {
     Meteor.subscribe('records');
 
-    Template.instance().encode = ((url) => {
+    this.encode = ((url) => {
         return new Promise ((resolve, reject) => {
             Meteor.call('encode', url, (error, results) => {
                 if (error) reject(error);
@@ -15,7 +15,7 @@ Template.form.onCreated(() => {
         });
     });
 
-    Template.instance().insertDocument = ((userId, doc) => {
+    this.insertDocument = ((userId, doc) => {
         return new Promise((resolve, reject) => {
             if (doc) {
                 Meteor.call('recordsInsert', userId, doc, (error, documentId) => {
@@ -45,8 +45,11 @@ Template.form.events({
                         if (!userId) {
                             Meteor.call('recordsUpdate', documentId);
                             localStorage.setItem('userId', documentId);
+                            Template.dbTable.__helpers.get('updateUserId').call(); 
                         }
                     });
             });
+
+        Template.result.showResult.set(true);
     }
 });

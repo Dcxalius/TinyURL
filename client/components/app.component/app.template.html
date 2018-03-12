@@ -1,13 +1,10 @@
 <template name='appContainer'>
   <div class="appContainer">
     <h3> TinyURL Generator </h3>
-    {{> form}} 
-    {{#if showResult}}
+    {{> form}}   
     <div>
       {{> result}}
     </div>
-    {{/if}}
-
   </div>
   <div class="dBTable">
     {{> dbTable}}

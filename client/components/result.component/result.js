@@ -2,9 +2,10 @@ import { Template } from 'meteor/templating';
 import { Records } from '../../../imports/api/records.js'
 
 import './result.template.html';
+Template.result.showResult = new ReactiveVar(false);
 
 Template.result.helpers({
-    result: () => {
-      return true;
-    },
-  });
+  showResult: () => {
+    return Template.result.showResult.get();
+  },
+});
