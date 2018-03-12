@@ -4,37 +4,60 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> formContainer}}
+  {{> appContainer}}
 </body>
 
-
-
-<template name="formContainer">
-  <div class="form">
-    <div class="wrapper">
-      <div class="main">
-        <div class="container">
-          {{> form }} {{> Template.dynamic template="list"}}
-        </div>
-      </div>
-    </div>
+<template name='appContainer'>
+  <div class="appContainer">
+    <h3> TinyURL Generator </h3>
+    {{> form}} {{> result}}
+  </div>
+  <div class="dBTable">
+    {{> dbTable}}
   </div>
 </template>
 
-<template name="list">
-  <div>ASD</div>
-  <ul>
-    {{#each record in topTen}}
-    <li><a>{{record.longUrl}}</a></li>
-    {{/each}}
-  </ul>
+<template name='form'>
+  <form>
+    <div>
+      <input type="url" id="input" name="urlInput" placeholder="paste your URL" required>
+    </div>
+    <div>
+      <button class="submit" type="submit" id='button'>Submit</button>
+    </div>
+  </form>
 </template>
 
-<template name="form">
-  <form>
-    <input type="url" name="urlInput" placeholder="paste your URL">
-    <button type="submit">Submit</button>
-  </form>
+<template name='result'>
+  <div>
+    your result
+  </div>
+</template>
+
+<template name='dbTable'>
+  <div class="dbTable-container">
+    {{#if checkIfEmpty}}
+    <table cellspacing='0'>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th>TinyURL</th>
+          <th>long URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each record in topTen}}
+        <tr>
+          <td>{{@index}}</td>
+          <td>{{record.clicked}}</td>
+          <td><a href={{record.shortUrl}}>{{record.shortUrl}}</a></td>
+          <td><a href={{record.longUrl}}>{{record.longUrl}}</a></td>
+          <td>{{record.created}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{/if}}
+  </div>
 </template>

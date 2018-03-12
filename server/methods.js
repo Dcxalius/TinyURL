@@ -13,8 +13,9 @@ Meteor.methods({
                 newSeq = element.seq + 1;
             });
         }
-        const key = 1000000000; 
-        let encodeNumber = newSeq + key;
+        
+        let randomNumber = Math.floor((Math.random() * (10000000000 - 1000000000)) + 1000000000);
+        let encodeNumber = newSeq +randomNumber;
 
         let encodedUrl = '';
         while (encodeNumber > 0) {
@@ -26,6 +27,7 @@ Meteor.methods({
             'longUrl': longUrl,
             'seq': newSeq,
             'shortUrl': encodedUrl,
+            'clicked': 0,
             'created': new Date(),
         });
     },
@@ -61,7 +63,7 @@ Meteor.methods({
         lastDoc.forEach((element) => {
             shortUrl=element.shortUrl;
             longUrl=element.longUrl;           
-            console.log(shortUrl + "   " + longUrl);
+            console.log(shortUrl);
             return shortUrl;           
             
         });
