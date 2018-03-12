@@ -13,6 +13,7 @@
             <tbody>
               {{#each record in topTen}}
               <tr>
+                <a href="" class="button delete">Delete</a>                  
                 <td>{{@index}}</td>
                 <td>{{record.clicked}}</td>
                 <td><a href={{record.shortUrl}}>{{record.shortUrl}}</a></td>

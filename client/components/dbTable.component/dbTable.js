@@ -11,7 +11,6 @@ Template.dbTable.helpers({
     topTen: () => {
       return Records.find({}, {sort:{created: -1}, limit:10});
     },
-
     checkIfEmpty: () => {
         console.log("empty checker");
       let record;

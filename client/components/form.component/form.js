@@ -6,7 +6,9 @@ const lastTen = Meteor.subscribe('records');
 
 Template.form.onCreated(() => {
     console.log("ASD");
-  });
+    this.in
+});
+
 Template.form.events({
     'submit' (event) {
       event.preventDefault();
@@ -14,4 +16,4 @@ Template.form.events({
       const url = target.urlInput.value;
       Meteor.call('encode', url);
     }
-  });
+});
