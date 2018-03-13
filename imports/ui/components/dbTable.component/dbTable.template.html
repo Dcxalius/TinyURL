@@ -1,33 +1,36 @@
 <template name='dbTable'>
+  
     {{#if getUserId }} {{#if checkIfEmpty }}
-    <table cellspacing='0'>
-      <thead>
+    <table class="table-fill">
+        <thead>
         <tr>
-          <th>Sequence</th>
-          <th>Visited</th>
-          <th>TinyURL</th>
-          <th>LongURL</th>
-          <th>Created On</th>
+            <th>Sequence</th>
+            <th>Visited</th>
+            <th>TinyURL</th>
+            <th>LongURL</th>
+            <th>Created On</th>
         </tr>
-      </thead>
-      <tbody>
-        {{#each record in topTen}}
-        <tr>
-          <td>{{@index}}</td>
-          <td>{{record.clicked}}</td>
-          <td>
-            <a href={{record.shortUrl}}>{{host}}/{{record.shortUrl}}</a>
-          </td>
-          <td>
-            <a href={{record.longUrl}}>{{record.longUrl}}</a>
-          </td>
-          <td>{{record.created}}</td>
-          <a href="" id ="ss" class="button cross"></a>
-
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="table-hover">
+            {{#each record in topTen}}
+            <tr>
+              <td>{{@index}}</td>
+              <td>{{record.clicked}}</td>
+              <td>
+                <a href={{record.shortUrl}}>{{host}}/{{record.shortUrl}}</a>
+              </td>
+              <td>
+                <a href={{record.longUrl}}>{{record.longUrl}}</a>
+              </td>
+              <td>{{record.created}}</td>
+              <a href="" id ="ss" class="button cross"></a>
+    
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
     {{/if}} {{/if}}
+
+
 
 </template>

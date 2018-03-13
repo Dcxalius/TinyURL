@@ -27,10 +27,6 @@ Template.form.onCreated(function() {
     });
 });
 
-Template.form.helpers({
-    
-});
-
 Template.form.events({
     'submit' (event, template) {
         event.preventDefault();
