@@ -54,6 +54,9 @@ meteor
 
 You will be listening to localhost:3000
 
+## TESTS
+No test are added so far
+
 
 ## Built With
 
