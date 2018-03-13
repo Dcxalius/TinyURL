@@ -1,13 +1,12 @@
 <template name="App_home">
-<div class="wrapper">
-  {{> header}}
-  <div class="appContainer">
-    <h3> TinyURL Generator </h3>
-    {{> form}}   
-    <div>
-      {{> result}}
-    </div>
-  </div>
+  <div class="wrapper">
+    {{> header}}
+    <div class="bodyWrapper">
+      <div class="appContainer">
+        <h2> TinyURL Generator </h2>
+        {{> form}}
+      </div>
       {{> dbTable}}
     </div>
+  </div>
 </template>
