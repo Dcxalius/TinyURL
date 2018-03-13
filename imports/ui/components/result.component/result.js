@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Records } from '../../../imports/api/records.js'
+import { Records } from '../../../api/records/records.js'
 
 import './result.template.html';
 Template.result.showResult = new ReactiveVar(false);

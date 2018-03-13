@@ -1,4 +1,4 @@
-import { Records } from '/imports/api/records.js';
+import { Records } from './records.js';
 
 const alphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -22,6 +22,10 @@ Meteor.methods({
             encodeNumber = Math.floor(encodeNumber / 62);
         }
         return { longUrl, encodedUrl, newSeq };  
+    },
+
+    removeRecord(){
+        Records.remove({})
     },
 
     recordsInsert(userId, document) {

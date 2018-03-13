@@ -1,4 +1,6 @@
-<template name='appContainer'>
+<template name="App_home">
+
+  {{> header}}
   <div class="appContainer">
     <h3> TinyURL Generator </h3>
     {{> form}}   
@@ -6,7 +8,8 @@
       {{> result}}
     </div>
   </div>
-  <div class="dBTable">
-    {{> dbTable}}
+  <div class="tableContainer">
+      {{> dbTable}}
   </div>
+    
 </template>

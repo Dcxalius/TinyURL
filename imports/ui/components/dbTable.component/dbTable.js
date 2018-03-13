@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { Records } from '../../../imports/api/records.js'
+import { Records } from '../../../api/records/records.js'
 
 import './dbTable.template.html';
 
@@ -24,7 +24,9 @@ Template.dbTable.helpers({
       });
       return record;  
     },
-
+    host:() =>{
+      return window.location.host;
+    },
     getUserId: () => {
       return Template.dbTable.userId.get(); 
     },
@@ -33,3 +35,12 @@ Template.dbTable.helpers({
       Template.dbTable.userId.set(localStorage.getItem('userId'));
     }
   });
+  
+  Template.dbTable.events({
+    'click': function(){
+    console.log("You clicked something");
+    // Records.remove(this._id);
+    console.log(Template.dbTable);
+    Meteor.call('removeRecord');
+  }
+});

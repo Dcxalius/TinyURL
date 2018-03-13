@@ -1,33 +1,33 @@
 <template name='dbTable'>
-  <div class="dbTable-container">
     {{#if getUserId }} {{#if checkIfEmpty }}
     <table cellspacing='0'>
       <thead>
         <tr>
-          <th></th>
-          <th></th>
+          <th>Sequence</th>
+          <th>Visited</th>
           <th>TinyURL</th>
-          <th>long URL</th>
+          <th>LongURL</th>
+          <th>Created On</th>
         </tr>
       </thead>
       <tbody>
         {{#each record in topTen}}
         <tr>
-          <a href="" class="button delete">Delete</a>
           <td>{{@index}}</td>
           <td>{{record.clicked}}</td>
           <td>
-            <a href={{record.shortUrl}}>{{record.shortUrl}}</a>
+            <a href={{record.shortUrl}}>{{host}}/{{record.shortUrl}}</a>
           </td>
           <td>
             <a href={{record.longUrl}}>{{record.longUrl}}</a>
           </td>
           <td>{{record.created}}</td>
+          <a href="" id ="ss" class="button cross"></a>
+
         </tr>
         {{/each}}
       </tbody>
     </table>
     {{/if}} {{/if}}
 
-  </div>
 </template>
