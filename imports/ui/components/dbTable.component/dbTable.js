@@ -37,10 +37,8 @@ Template.dbTable.helpers({
   });
   
   Template.dbTable.events({
-    'click .button': function(){
-    console.log("You clicked something");
-    // Records.remove(this._id);
-    console.log(Template.dbTable);
-    // Meteor.call('removeRecord');
+    'click .button': function(event){
+    const shortUrl = event.currentTarget.attributes.data.value;
+    Meteor.call('deleteRecord', shortUrl);
   }
 });

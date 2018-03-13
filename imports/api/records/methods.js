@@ -24,8 +24,8 @@ Meteor.methods({
         return { longUrl, encodedUrl, newSeq };  
     },
 
-    removeRecord(){
-        Records.remove({})
+    deleteRecord(shortUrl){
+        Records.remove({ shortUrl: shortUrl});
     },
 
     recordsInsert(userId, document) {

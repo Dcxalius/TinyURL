@@ -212,7 +212,7 @@ input{
 	display: none;
 	margin: 0px;
 }
-table tr:hover #ss {
+table tr:hover .button{
 	display: inline-block;
 	
 }

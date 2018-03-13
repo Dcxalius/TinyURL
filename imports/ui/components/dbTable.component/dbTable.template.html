@@ -17,14 +17,13 @@
               <td>{{@index}}</td>
               <td>{{record.clicked}}</td>
               <td>
-                <a href={{record.shortUrl}}>{{host}}/{{record.shortUrl}}</a>
+                <a name="shorUrl" href={{record.shortUrl}}>{{host}}/{{record.shortUrl}}</a>
               </td>
               <td>
                 <a href={{record.longUrl}}>{{record.longUrl}}</a>
               </td>
               <td>{{record.created}}</td>
-              <a href="" id ="ss" class="button cross"></a>
-    
+              <button data="{{record.shortUrl}}" class="button cross"></button>
             </tr>
             {{/each}}
         </tbody>
