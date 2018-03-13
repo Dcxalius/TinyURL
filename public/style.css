@@ -73,6 +73,7 @@ input{
  }
  table{
 	table-layout: fixed;
+	position: relative;
 
  }
  
@@ -117,12 +118,14 @@ input{
    
  tr {
    border-top: 1px solid #C1C3D1;
-   border-bottom-: 1px solid #C1C3D1;
+   border-bottom: 1px solid #C1C3D1;
    color:#666B85;
    font-size:16px;
    font-weight:normal;
    text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
- }
+   position: relative;
+
+}
   
  tr:hover td {
    background:#4E5066;
@@ -204,18 +207,16 @@ input{
 	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
 	float:left;
 	height: 30px;
-	margin: 0 30px 30px 0;
-	position: fixed;
+    margin-top: 20px;
+	margin-left: 12px;
+	position: absolute;
 	width: 30px;			
 	-webkit-transition: all .1s linear;
 	transition: all .1s linear;
-	display: none;
-	margin: 0px;
+	display: block;
 }
-table tr:hover .button{
-	display: inline-block;
 	
-}
+
 .button:after{
 	color:#e9e6e4;
 	content: "";
@@ -232,8 +233,8 @@ table tr:hover .button{
 
 .cross:after{
 	content: "✖";
-	left: 11px;
-	top: 6px;
+	left: 4px;
+	top: -1px;
 }
 
 .button:hover{
