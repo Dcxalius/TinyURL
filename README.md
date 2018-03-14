@@ -37,7 +37,7 @@ git clone https://github.com/ticooo95/TinyURL.git
 Then
 
 ```bash
-cd /TinyUrl
+cd TinyUrl
 ```
 
 run npm install, to install any missing dependencies
