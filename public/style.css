@@ -39,6 +39,9 @@ h2{
 form{
   margin-top: 85px;
 }
+img{
+  border-radius: 50px;
+}
 
 #stay{
   font-family: 'Lobster', cursive; 
