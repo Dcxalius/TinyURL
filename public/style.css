@@ -41,9 +41,11 @@ form{
 }
 img{
   border-radius: 50px;
-
   opacity: 1.0;
   transition: opacity 0.2s ease-in-out;
+  margin-top: -9px;
+  border: black 13px;
+  border-style: solid;
 }
 img:hover{
   opacity: 0.6;
@@ -52,13 +54,13 @@ img:hover{
 
 #stay{
   font-family: 'Lobster', cursive; 
-    font-size: 36px;
+  font-size: 36px;
   font-weight: normal;
   line-height: 48px;
   text-shadow: 1px 0 0 #fff;
   width: fit-content;
   position: fixed;
-  margin-top: 8px;
+  margin-top: -4px;
   margin-left: -111px;
   display: inline-block;
 }
@@ -66,13 +68,13 @@ img:hover{
   
   width: fit-content;
   position: fixed;
-  margin-top: 8px;
-  margin-left: 15px;
+  margin-top: -4px;
+  margin-left: 13px;
   display: inline-block;
 }
 header{
   padding: 5px;
-  height: fit-content;
+  height: 45px;
   width: 100%;
   color: white;
   background-color: black;
@@ -144,7 +146,6 @@ input{
  }
  table{
 	table-layout: fixed;
-	position: relative;
 
  }
  
@@ -164,7 +165,13 @@ input{
    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
    animation: float 5s infinite;
  }
-  
+  #seq{
+    width: 100px;
+  }
+  #visited{
+    width: 50px;
+    text-align: center;
+  }
  th {
    color:#D5DDE5;;
    background:#1b1e24;
@@ -173,9 +180,10 @@ input{
    font-size:23px;
    font-weight: 100;
    padding:24px;
-   text-align:left;
+   text-align:center;
    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
    vertical-align:middle;
+   
  }
  
  th:first-child {
@@ -231,6 +239,8 @@ input{
  td {
    background:#FFFFFF;
    padding:10px;
+   max-width: 200px;
+   max-height: 50px;
    text-align:center;
    vertical-align:middle;
    font-weight:300;
